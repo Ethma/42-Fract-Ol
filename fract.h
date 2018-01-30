@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:11:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/01/30 12:45:10 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/01/30 16:00:20 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct 		s_stock
 {
 			void	*window;
 			void	*mlx;
+			void	*img;
 			int		i;
 }					t_stock;
 

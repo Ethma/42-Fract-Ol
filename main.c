@@ -6,11 +6,18 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:06:41 by mabessir          #+#    #+#             */
-/*   Updated: 2018/01/30 12:44:34 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/01/30 16:41:06 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
+
+void	ft_create_img(t_stock *stock)
+{
+	stock->mlx = mlx_init()
+	stock->window = mlx_new_window(stock->mlx, WIN_W, WIN_H, "Fractol");
+	stock->img = 
+}
 
 int		ft_input(char *str)
 {
@@ -41,6 +48,7 @@ int		main(int ac, char **av)
 	}
 	if ((i = ft_input(av[1])) == -1)
 		ft_putendl("This fractol doesn't exist");
+	ft_create_img(&stock, i);
 	if (i == 1)
 		mandelbrot(&stock, &map);
 	return (0);
