@@ -3,6 +3,10 @@ CC		 = gcc
 O_DIR	 = $(FILES:.c=.o)
 CFLAGS	 = -Wall -Wextra -Werror
 FILES	 = main.c \
+fractales.c \
+draw.c \
+hooks.c \
+exit.c \
 
 L        = -L./libft/ -lft -L./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit \
 
