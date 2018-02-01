@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:48:11 by mabessir          #+#    #+#             */
-/*   Updated: 2018/01/31 15:37:50 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/01 16:09:21 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,50 @@
 #define zr map->zr
 #define zi map->zi
 #define tmp map->tmp
+#define y stock->y2
+#define x stock->x2
 
 void		init_stock_map(t_stock *stock, t_map *map)
 {
 	stock->START_X = 0;
 	stock->START_Y = 0.0;
-	map->y = 0;
-	map->x = 0;
+	map->yy = 0;
+	map->xx = 0;
+	stock->height = WIN_H;
+	stock->width = WIN_W;
 }
 
-void		ft_map_x(t_map *map, t_stock *stock, double x)
+double		ft_map(t_stock *stock, double new_min, double new_max, double value)
 {
-	map->x = (x - 0) / (WIN_W - 0);
-	map->x = (2 + 2) * map->x - 2;
+	double	new;
+
+	new = (value - 0) / (WIN_H - 0);
+	new = ((new_max - new_min) * new) + new_min;
+	return (new);
 }
 
-void		ft_map_y(t_map *map, t_stock *stock, double y)
-{
-	map->y = (y - 0) / (WIN_H - 0);
-	map->y = ((2 + 2) * map->y) - 2;
-}
 void		mandelbrot(t_stock *stock, t_map *map)
 {
 	int		n;
 	double	pos;
-	double	y;
-	double	x;
+	int		maxiter;
 
-
+	maxiter = 100;
 	init_stock_map(stock, map);
 	y = -1;
 	while (++y < WIN_H)
 	{
 		x = -1;
-		ft_map_y(map, stock, y);
-		map->cb = map->y;
+	;
+		map->cb = ft_map(stock, -2 , 2, y); 
 		while (++x < WIN_W)
 		{
-			ft_map_x(map, stock, x);
-			map->ca = map->x;
+			map->ca = ft_map(stock, -2 , 2, x);
+			ft_map(stock, -2, 2, x);
 			zr = 0;
 			zi = 0;
 			n = 0;
-			while (n < 800)
+			while (n < maxiter)
 			{
 				tmp = zr;
 				zr = zr * zr - zi * zi + map->ca;
@@ -65,7 +66,7 @@ void		mandelbrot(t_stock *stock, t_map *map)
 					break;
 				n++;
 			}
-		if (n == 800)
+		if (n == maxiter)
 			mlx_pixel_put_to_image(stock->img, x, y, 0);
 		else
 			mlx_pixel_put_to_image(stock->img, x, y, 0xFFFFFF);

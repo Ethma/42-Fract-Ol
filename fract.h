@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:11:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/01/31 15:37:36 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/01 16:09:14 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,21 @@ typedef struct 		s_stock
 			void	*mlx;
 			void	*img;
 			int		i;
-			double START_X;
-			double START_Y;
-			double ZOOM;
+			double	START_X;
+			double	START_Y;
+			double	ZOOM;
+			int		x;
+			int		y;
+			int		height;
+			int		width;
+			int		x2;
+			int		y2;
 }					t_stock;
 
 typedef struct		s_map
 {
-			double	x;
-			double	y;
+			double	xx;
+			double	yy;
 			double	ca;
 			double	cb;
 			double	zr;
@@ -43,13 +49,12 @@ typedef struct		s_map
 			double	tmp;
 }					t_map;
 
-int			ft_input(char *str);
-int			key_hook(int keycode, t_stock *stock);
-int			ft_exit_finish(char *str, int i, t_stock *stock);
-void		mandelbrot(t_stock *stock, t_map *map);
-void		ft_map_x(t_map *map, t_stock *stock, double x);
-void		ft_map_y(t_map *map, t_stock *stock, double y);
-void		init_stock_map(t_stock *stock, t_map *map);
-void		mlx_pixel_put_to_image(void *img, int x, int y, int color);
-
+int					ft_input(char *str);
+int					key_hook(int keycode, t_stock *stock);
+int					ft_exit_finish(char *str, int i, t_stock *stock);
+void				mandelbrot(t_stock *stock, t_map *map);
+void				init_stock_map(t_stock *stock, t_map *map);
+void				mlx_pixel_put_to_image(void *img, int x, int y, int color);
+double				ft_map(t_stock *stock, double new_min,
+double new_max, double value);
 #endif
