@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:06:41 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/01 15:11:28 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/02 15:56:02 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int		main(int ac, char **av)
 {
 	int		i;
 	t_stock	stock;
-	t_map	map;
 
 	if (ac != 2)
 	{
@@ -53,6 +52,6 @@ int		main(int ac, char **av)
 	}
 	ft_create_img(&stock);
 	if (i == 1)
-		mandelbrot(&stock, &map);
+		mandelbrot(&stock);
 	return (0);
 }

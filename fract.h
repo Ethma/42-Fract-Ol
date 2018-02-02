@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:11:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/01 16:09:14 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/02 15:55:52 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,29 @@ typedef struct		s_map
 			double	tmp;
 }					t_map;
 
+typedef	struct		s_color
+{
+			int		a;
+			int		b;
+			int		c;
+			int		d;
+			int		e;
+			int		f;
+			int		g;
+			int		h;
+			int		i;
+			int		j;
+			int		k;
+}					t_color;
+
 int					ft_input(char *str);
 int					key_hook(int keycode, t_stock *stock);
 int					ft_exit_finish(char *str, int i, t_stock *stock);
-void				mandelbrot(t_stock *stock, t_map *map);
+void				mandelbrot(t_stock *stock);
 void				init_stock_map(t_stock *stock, t_map *map);
 void				mlx_pixel_put_to_image(void *img, int x, int y, int color);
 double				ft_map(t_stock *stock, double new_min,
 double new_max, double value);
+void				ft_draw(t_stock *stock, int i , int n);
+t_color				ft_color(t_color *color, int n);
 #endif

@@ -6,14 +6,14 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:48:11 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/01 16:09:21 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/02 15:55:24 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
-#define zr map->zr
-#define zi map->zi
-#define tmp map->tmp
+#define zr map.zr
+#define zi map.zi
+#define tmp map.tmp
 #define y stock->y2
 #define x stock->x2
 
@@ -36,23 +36,24 @@ double		ft_map(t_stock *stock, double new_min, double new_max, double value)
 	return (new);
 }
 
-void		mandelbrot(t_stock *stock, t_map *map)
+void		mandelbrot(t_stock *stock)
 {
 	int		n;
 	double	pos;
 	int		maxiter;
+	t_map	map;
 
 	maxiter = 100;
-	init_stock_map(stock, map);
+	init_stock_map(stock, &map);
 	y = -1;
-	while (++y < WIN_H)
+	while (++y < stock->height)
 	{
 		x = -1;
 	;
-		map->cb = ft_map(stock, -2 , 2, y); 
-		while (++x < WIN_W)
+		map.cb = ft_map(stock, -2 , 2, y); 
+		while (++x < stock->width)
 		{
-			map->ca = ft_map(stock, -2 , 2, x);
+			map.ca = ft_map(stock, -2 , 2, x);
 			ft_map(stock, -2, 2, x);
 			zr = 0;
 			zi = 0;
@@ -60,16 +61,18 @@ void		mandelbrot(t_stock *stock, t_map *map)
 			while (n < maxiter)
 			{
 				tmp = zr;
-				zr = zr * zr - zi * zi + map->ca;
-				zi = 2 * tmp * zi + map->cb;
+				zr = zr * zr - zi * zi + map.ca;
+				zi = 2 * tmp * zi + map.cb;
 				if ((zr * zr - zi * zi) > 4.0)
 					break;
 				n++;
 			}
-		if (n == maxiter)
+		/*if (n == maxiter)
 			mlx_pixel_put_to_image(stock->img, x, y, 0);
 		else
 			mlx_pixel_put_to_image(stock->img, x, y, 0xFFFFFF);
+			*/
+			ft_draw(stock, 2, n);
 		}
 	}
 	mlx_put_image_to_window(stock->mlx, stock->window, stock->img, 0, 0);
