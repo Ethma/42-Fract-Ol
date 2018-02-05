@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:06:41 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/02 15:56:02 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/05 15:48:35 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_input(char *str)
 
 int		main(int ac, char **av)
 {
-	int		i;
+	int		choice_projection;
 	t_stock	stock;
 
 	if (ac != 2)
@@ -45,13 +45,15 @@ int		main(int ac, char **av)
 		ft_putendl("Mandelbrot | Julia | Other");
 		return (0);
 	}
-	if ((i = ft_input(av[1])) == -1)
+	if ((choice_projection = ft_input(av[1])) == -1)
 	{
 		ft_putendl("This fractol doesn't exist");
 		return (0);
 	}
 	ft_create_img(&stock);
-	if (i == 1)
+	if (choice_projection == 1)
 		mandelbrot(&stock);
+	if (choice_projection == 2)
+		julia(&stock);
 	return (0);
 }

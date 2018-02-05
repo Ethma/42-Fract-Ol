@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:11:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/02 15:55:52 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/05 15:48:10 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct 		s_stock
 			int		width;
 			int		x2;
 			int		y2;
+			int		index;
+			int		**tabint;
 }					t_stock;
 
 typedef struct		s_map
@@ -74,4 +76,8 @@ double				ft_map(t_stock *stock, double new_min,
 double new_max, double value);
 void				ft_draw(t_stock *stock, int i , int n);
 t_color				ft_color(t_color *color, int n);
+void				ft_clean(t_stock *stock);
+void				ft_redraw(t_stock *stock, int i);
+void				julia(t_stock *stock);
+
 #endif
