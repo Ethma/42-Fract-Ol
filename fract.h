@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:11:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/05 15:48:10 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/06 15:18:13 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ t_color				ft_color(t_color *color, int n);
 void				ft_clean(t_stock *stock);
 void				ft_redraw(t_stock *stock, int i);
 void				julia(t_stock *stock);
+void				ft_end(t_stock *stock);
+void				tricorne(t_stock *stock);
 
 #endif

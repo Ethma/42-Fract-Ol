@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:06:41 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/05 15:48:35 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/06 15:18:53 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ int		ft_input(char *str)
 		return (1);
 	if (ft_strcmp(str, "Julia") == 0)
 		return (2);
-	if (ft_strcmp(str, "") == 0)
+	if (ft_strcmp(str, "Burningsheep") == 0)
 		return (3);
+	if (ft_strcmp(str, "Slip") == 0)
+		return (4);
+	if (ft_strcmp(str, "Tricorne") == 0)
+		return (5);
 	return (-1);
 }		
 
@@ -55,5 +59,7 @@ int		main(int ac, char **av)
 		mandelbrot(&stock);
 	if (choice_projection == 2)
 		julia(&stock);
+	if (choice_projection == 5)
+		tricorne(&stock);
 	return (0);
 }
