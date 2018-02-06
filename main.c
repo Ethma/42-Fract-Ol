@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:06:41 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/01 15:11:28 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/06 15:18:53 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,19 @@ int		ft_input(char *str)
 		return (1);
 	if (ft_strcmp(str, "Julia") == 0)
 		return (2);
-	if (ft_strcmp(str, "") == 0)
+	if (ft_strcmp(str, "Burningsheep") == 0)
 		return (3);
+	if (ft_strcmp(str, "Slip") == 0)
+		return (4);
+	if (ft_strcmp(str, "Tricorne") == 0)
+		return (5);
 	return (-1);
 }		
 
 int		main(int ac, char **av)
 {
-	int		i;
+	int		choice_projection;
 	t_stock	stock;
-	t_map	map;
 
 	if (ac != 2)
 	{
@@ -46,13 +49,17 @@ int		main(int ac, char **av)
 		ft_putendl("Mandelbrot | Julia | Other");
 		return (0);
 	}
-	if ((i = ft_input(av[1])) == -1)
+	if ((choice_projection = ft_input(av[1])) == -1)
 	{
 		ft_putendl("This fractol doesn't exist");
 		return (0);
 	}
 	ft_create_img(&stock);
-	if (i == 1)
-		mandelbrot(&stock, &map);
+	if (choice_projection == 1)
+		mandelbrot(&stock);
+	if (choice_projection == 2)
+		julia(&stock);
+	if (choice_projection == 5)
+		tricorne(&stock);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:06:17 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/01 10:45:17 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/05 16:02:29 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 void	keykey(int i, t_stock *stock)
 {
-	if (i == 124)
-	{
-		stock->x += 10;
-		mlx_clear_window(stock->mlx, stock->window);
-		mlx_put_image_to_window(stock->mlx, stock->window,
-		stock->img, stock->x, stock->y);
-	}
-	if (i == 125)
-	{
-		stock->y += 10;
-		mlx_clear_window(stock->mlx, stock->window);
-		mlx_put_image_to_window(stock->mlx, stock->window,
-		stock->img, stock->x, stock->y);
-	}
+	int y;
+
+	y = 0;
+	if (i == 83)
+		ft_redraw(stock, 0);
+	if (i == 84)
+		ft_redraw(stock, 1);
+	if (i == 85)
+		ft_redraw(stock, 2);
+	if (i == 86)
+		ft_redraw(stock, 3);
+	mlx_put_image_to_window(stock->mlx, stock->window,
+	stock->img, 0, 0);
 }
 
 int		key_hook(int keycode, t_stock *stock)
@@ -38,23 +37,13 @@ int		key_hook(int keycode, t_stock *stock)
 		mlx_destroy_window(stock->mlx, stock->window);
 		ft_exit_finish("Exit Success", 2, stock);
 	}
-	if (keycode == 123)
-	{
-		stock->x -= 10;
-		mlx_clear_window(stock->mlx, stock->window);
-		mlx_put_image_to_window(stock->mlx, stock->window,
-		stock->img, stock->x, stock->y);
-	}
-	if (keycode == 126)
-	{
-		stock->y -= 10;
-		mlx_clear_window(stock->mlx, stock->window);
-		mlx_put_image_to_window(stock->mlx,
-		stock->window, stock->img, stock->x, stock->y);
-	}
-	if (keycode == 124)
-		keykey(124, stock);
-	if (keycode == 125)
-		keykey(125, stock);
+	if (keycode == 83)
+		keykey(83, stock);
+	if (keycode == 84)
+		keykey(84, stock);
+	if (keycode == 85)
+		keykey(85, stock);
+	if (keycode == 86)
+		keykey(86, stock);
 	return (0);
 }
