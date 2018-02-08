@@ -1,7 +1,10 @@
 NAME	 = fractol
 CC		 = gcc
-O_DIR	 = $(FILES:.c=.o)
+OBJ_NAME = $(FILES:.c=.o)
+OBJ_PATH = ./obj
 CFLAGS	 = -Wall -Wextra -Werror
+SRC_PATH = ./src
+INCLUDE = -I./include
 FILES	 = main.c \
 fractales.c \
 draw.c \
@@ -9,28 +12,30 @@ hooks.c \
 exit.c \
 julia.c \
 mandelbrot.c \
-tricorne.c \
-
-L        = -L./libft/ -lft -L./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit \
-
+tricorne.c 
+SRC = $(addprefix $(SRC_PATH)/,$(FILES))
+OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+L        = -L./libft/ -lft -L./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
 RM		 = rm -f
 
 all: header $(NAME)
 
-$(NAME): $(FILES)
+$(NAME): bjr $(OBJ)
 	@tput cnorm
 	@echo ""
 	@echo ""
 	make -C libft/
 	make -C minilibx_macos/
-	$(CC) -c $(FILES)
-	$(CC) $(O_DIR) $(L) -o $(NAME)
+	$(CC) $(OBJ) $(L) -o $(NAME)
 	@echo "./[0;34m$(NAME)[0;38m created."
 	@tput cnorm
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	$(CC) -c $? $(INCLUDE) -o $@
 clean:
-	$(RM) $(O_DIR)
+	rm -rf $(OBJ_PATH)
 	@echo "[0;1mClear."
-
+bjr:
+	mkdir -p $(OBJ_PATH) 
 fclean: 	clean
 	$(RM) $(NAME)
 	make fclean -C libft/
@@ -39,6 +44,7 @@ fclean: 	clean
 
 libfclean:
 	make fclean -C libft/
+	@echo "[0;1mClear."
 
 header:
 	@tput civis

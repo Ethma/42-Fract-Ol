@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:05:25 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/06 16:00:02 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/08 16:45:35 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void		julia(t_stock *stock)
 	t_map	map;
 
 	init_stock_map(stock, &map);
+	stock->juli = 1;
 	Y = -1;
 	while (++Y < stock->height)
 	{

@@ -6,15 +6,15 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:11:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/06 15:18:13 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/08 16:48:47 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_H
 # define FRACT_H
 
-# include "libft/get_next_line.h"
-# include "libft/libft.h"
+# include "../libft/get_next_line.h"
+# include "../libft/libft.h"
 # include <stdlib.h>
 # include <mlx.h>
 # include <math.h>
@@ -38,6 +38,9 @@ typedef struct 		s_stock
 			int		y2;
 			int		index;
 			int		**tabint;
+			int		juli;
+			int		ca;
+			int		cb;
 }					t_stock;
 
 typedef struct		s_map
@@ -81,5 +84,6 @@ void				ft_redraw(t_stock *stock, int i);
 void				julia(t_stock *stock);
 void				ft_end(t_stock *stock);
 void				tricorne(t_stock *stock);
+int					mouse(int x, int y, t_stock *stock);
 
 #endif

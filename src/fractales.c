@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:48:11 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/06 15:10:49 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/08 16:44:02 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void		ft_end(t_stock *stock)
 	mlx_put_image_to_window(stock->mlx, stock->window, stock->img, 0, 0);
 	mlx_key_hook(stock->window, key_hook, stock);
 //	mlx_mouse_hook(stock->window, mouse_hook, stock);
-	//mlx_hook(stock->window, 6, 6L >> 1L, mouse, stock);
+	if (stock->juli == 1)
+		;//mlx_hook(stock->window, 6, 6L >> 1L, mouse, stock);
 	mlx_loop(stock->mlx);
 }
 
@@ -35,6 +36,7 @@ void		init_stock_map(t_stock *stock, t_map *map)
 	map->xx = 0;
 	stock->height = WIN_H;
 	stock->width = WIN_W;
+	stock->juli = 0;
 	tabint = (int **)malloc(sizeof(int *) * (WIN_H));
 }
 
