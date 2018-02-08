@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:06:17 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/05 16:02:29 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/08 16:44:24 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,12 @@ int		key_hook(int keycode, t_stock *stock)
 		keykey(85, stock);
 	if (keycode == 86)
 		keykey(86, stock);
+	return (0);
+}
+
+int		mouse(int x, int y, t_stock *stock)
+{
+	if (x > 0 && y > 0 && x < WIN_W && y < WIN_H)
+	;
 	return (0);
 }
