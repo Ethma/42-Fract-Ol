@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:11:33 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/08 13:58:35 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/09 13:00:35 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,19 @@ static int	ft_test(t_stock *stock, t_map *map)
 		TMP = ZR;
 		ZR = fabs(ZR) * fabs(ZR) - fabs(ZI * ZI) + map->ca;
 		ZI = 2 * fabs(TMP) * fabs(ZI) + map->cb;
-		if ((ZR * ZR - ZI * ZI) > 4.0)
+		if ((ZR * ZR - ZI * ZI) > 4)
 			return (n);
 		n++;
 	}
 	return (n);
 }
 
-void		tricorne(t_stock *stock)
+void		burningsheep(t_stock *stock)
 {
 	int		n;
 	double	pos;
-	int		maxiter;
 	t_map	map;
 
-	maxiter = 100;
 	init_stock_map(stock, &map);
 	Y = -1;
 	while (++Y < stock->height)
