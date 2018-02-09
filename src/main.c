@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:06:41 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/08 13:57:12 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/09 16:50:35 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ft_create_img(t_stock *stock)
 	stock->mlx = mlx_init();
 	stock->window = mlx_new_window(stock->mlx, WIN_W, WIN_H, "Kevin");
 	stock->img = mlx_new_image(stock->mlx, WIN_W, WIN_H); 
+	stock->move = 'N';
 }
 
 int		ft_input(char *str)
@@ -58,8 +59,8 @@ int		main(int ac, char **av)
 	if (choice_projection == 1)
 		mandelbrot(&stock);
 	if (choice_projection == 2)
-		julia(&stock);
-	if (choice_projection == 5)
-		tricorne(&stock);
+		julia(&stock, 0.285, 0.01, 0);
+	if (choice_projection == 3)
+		burningsheep(&stock);
 	return (0);
 }

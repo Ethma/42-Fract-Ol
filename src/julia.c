@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:05:25 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/08 16:45:35 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/09 17:40:59 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ static int	ft_test(t_stock *stock, t_map *map)
 		TMP = ZR;
 		ZR = ZR * ZR - ZI * ZI + map->ca;
 		ZI = 2 * TMP * ZI + map->cb;
-		if ((ZR * ZR - ZI * ZI) > 4.0)
+		if ((ZR * ZR - ZI * ZI) >= 4.0)
 			return (n);
 		n++;
 	}
 	return (n);
 }
 
-void		julia(t_stock *stock)
+void		julia(t_stock *stock, double x, double y, int z)
 {
 	int		n;
 	double	pos;
@@ -54,11 +54,11 @@ void		julia(t_stock *stock)
 		{
 			map.zr = ft_map(stock, -2, 2, X);
 			map.zi = ft_map(stock, -2, 2, Y);
-			map.ca = 0.285;
-			map.cb = 0.01;
+			map.ca = x;
+			map.cb = y;
 			n = ft_test(stock, &map);
 			TAB[Y][X] = n;
-			ft_draw(stock, 0, n);
+			ft_draw(stock, z, n);
 		}
 	}
 	ft_end(stock);

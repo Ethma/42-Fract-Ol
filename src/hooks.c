@@ -6,11 +6,13 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:06:17 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/08 16:44:24 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/09 16:52:42 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
+#define CA stock->ca
+#define CB stock->cb
 
 void	keykey(int i, t_stock *stock)
 {
@@ -45,12 +47,19 @@ int		key_hook(int keycode, t_stock *stock)
 		keykey(85, stock);
 	if (keycode == 86)
 		keykey(86, stock);
+	if (keycode == 49)
+		stock->move = stock->move == 'Y' ? 'N' : 'Y';
 	return (0);
 }
 
 int		mouse(int x, int y, t_stock *stock)
 {
-	if (x > 0 && y > 0 && x < WIN_W && y < WIN_H)
-	;
+	if (x > 0 & y > 0 && x < WIN_W && y < WIN_H && stock->move == 'Y')
+		{
+			CA = (double)x / (double)WIN_W * 4 - 2;
+			CB = (double)y / (double)WIN_H * 4 - 2;
+			mlx_clear_window(stock->mlx, stock->window);
+			julia(stock, CA, CB, 0);
+		}
 	return (0);
 }

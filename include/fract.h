@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:11:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/08 16:48:47 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/09 16:52:30 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ typedef struct 		s_stock
 			int		index;
 			int		**tabint;
 			int		juli;
-			int		ca;
-			int		cb;
+			double	ca;
+			double	cb;
+			char	move;
 }					t_stock;
 
 typedef struct		s_map
@@ -81,9 +82,10 @@ void				ft_draw(t_stock *stock, int i , int n);
 t_color				ft_color(t_color *color, int n);
 void				ft_clean(t_stock *stock);
 void				ft_redraw(t_stock *stock, int i);
-void				julia(t_stock *stock);
+void				julia(t_stock *stock, double x, double y, int z);
 void				ft_end(t_stock *stock);
 void				tricorne(t_stock *stock);
+void				burningsheep(t_stock *stock);
 int					mouse(int x, int y, t_stock *stock);
 
 #endif
