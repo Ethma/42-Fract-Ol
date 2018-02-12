@@ -6,16 +6,16 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 13:03:53 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/09 18:26:43 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:33:17 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
-#define y1 stock->y2
-#define x1 stock->x2
-#define tabint stock->tabint
+#define Y1 stock->y2
+#define X1 stock->x2
+#define TAB stock->tabint
 
-void			mlx_pixel_put_to_image(void *img, int x, int y, int color)
+void	mlx_pixel_put_to_image(void *img, int x, int y, int color)
 {
 	char	*data;
 	int		bpp;
@@ -37,7 +37,7 @@ void			mlx_pixel_put_to_image(void *img, int x, int y, int color)
 	color /= 256;
 }
 
-t_color		ft_color(t_color *color, int n)
+t_color	ft_color(t_color *color, int n)
 {
 	if (n == 0)
 		*color = (t_color){.a = 0xb2bec3, .b = 0xe84393, .c = 0x636e72,
@@ -55,7 +55,7 @@ t_color		ft_color(t_color *color, int n)
 		*color = (t_color){.a = 0xFF9999, .b = 0xFFCC99, .c = 0xFFFF99,
 		.d = 0xCCFF99, .e = 0x99FF99, .f = 0x99FFCC, .g = 0x99FFFF,
 		.h = 0x99CCFF, .i = 0x999FF, .j = 0xCC99FF, .k = 0xf1cbff};
-	return (color[n]); 
+	return (color[n]);
 }
 
 void	ft_draw(t_stock *stock, int i, int n)
@@ -64,27 +64,27 @@ void	ft_draw(t_stock *stock, int i, int n)
 
 	ft_color(&color, i);
 	if (n == 100)
-		mlx_pixel_put_to_image(stock->img, x1, y1, color.k);
-	if (n >= 90 && n <= 99)
-		mlx_pixel_put_to_image(stock->img, x1, y1, color.j);
-	if (n >= 80 && n <= 89)
-		mlx_pixel_put_to_image(stock->img, x1, y1, color.i);
-	if (n >= 70 && n <= 79)
-		mlx_pixel_put_to_image(stock->img, x1, y1, color.h);
-	if (n >= 60 && n <= 69)
-		mlx_pixel_put_to_image(stock->img, x1, y1, color.g);
-	if (n >= 50 && n <= 59)
-		mlx_pixel_put_to_image(stock->img, x1, y1, color.f);
-	if (n >= 40 && n <= 49)
-		mlx_pixel_put_to_image(stock->img, x1, y1, color.e);
-	if (n >= 30 && n <= 39)
-		mlx_pixel_put_to_image(stock->img, x1, y1, color.d);
-	if (n >= 20 && n <= 29)
-		mlx_pixel_put_to_image(stock->img, x1, y1, color.c);
-	if (n >= 10 && n <= 19)
-		mlx_pixel_put_to_image(stock->img, x1, y1, color.b);
-	if (n < 10 && n >= 0)
-		mlx_pixel_put_to_image(stock->img, x1, y1, color.a);
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.k);
+	else if (n >= 90 && n <= 99)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.j);
+	else if (n >= 80 && n <= 89)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.i);
+	else if (n >= 70 && n <= 79)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.h);
+	else if (n >= 60 && n <= 69)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.g);
+	else if (n >= 50 && n <= 59)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.f);
+	else if (n >= 40 && n <= 49)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.e);
+	else if (n >= 30 && n <= 39)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.d);
+	else if (n >= 20 && n <= 29)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.c);
+	else if (n >= 10 && n <= 19)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.b);
+	else
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.a);
 }
 
 void	ft_redraw(t_stock *stock, int i)
@@ -93,18 +93,20 @@ void	ft_redraw(t_stock *stock, int i)
 	int	y;
 
 	y = -1;
-	y1 = 0;
+	Y1 = 0;
 	while (++y < WIN_H)
 	{
 		x = -1;
-		x1 = 0;
+		X1 = 0;
 		while (++x < WIN_W)
 		{
-			ft_draw(stock, i, tabint[y][x]);
-			x1++;
+			ft_draw(stock, i, TAB[y][x]);
+			X1++;
 		}
-		y1++;
+		Y1++;
 	}
+	mlx_string_put(stock->mlx, stock->window, 0, 0,
+	0xFFFFFF, "Change color :NUM PAD 1 TO 4");
 }
 
 void	ft_clean(t_stock *stock)

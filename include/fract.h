@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:11:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/09 16:52:30 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:52:47 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct 		s_stock
 			double	ca;
 			double	cb;
 			char	move;
+			int		ra;
 }					t_stock;
 
 typedef struct		s_map
@@ -70,14 +71,13 @@ typedef	struct		s_color
 			int		k;
 }					t_color;
 
-int					ft_input(char *str);
+int					ft_input(t_stock *stock, char *str);
 int					key_hook(int keycode, t_stock *stock);
-int					ft_exit_finish(char *str, int i, t_stock *stock);
+int					ft_exit_finish(char *str, int i);
 void				mandelbrot(t_stock *stock);
 void				init_stock_map(t_stock *stock, t_map *map);
 void				mlx_pixel_put_to_image(void *img, int x, int y, int color);
-double				ft_map(t_stock *stock, double new_min,
-double new_max, double value);
+double				ft_map(double new_min, double new_max, double value);
 void				ft_draw(t_stock *stock, int i , int n);
 t_color				ft_color(t_color *color, int n);
 void				ft_clean(t_stock *stock);
@@ -85,7 +85,8 @@ void				ft_redraw(t_stock *stock, int i);
 void				julia(t_stock *stock, double x, double y, int z);
 void				ft_end(t_stock *stock);
 void				tricorne(t_stock *stock);
-void				burningsheep(t_stock *stock);
+void				burningship(t_stock *stock);
 int					mouse(int x, int y, t_stock *stock);
+void				ft_create_img(t_stock *stock);
 
 #endif

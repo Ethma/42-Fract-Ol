@@ -6,13 +6,13 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 15:33:24 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/08 13:58:19 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:06:41 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
 
-int		ft_exit_finish(char *str, int i, t_stock *stock)
+int		ft_exit_finish(char *str, int i)
 {
 	if (i == 2)
 	{

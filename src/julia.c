@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:05:25 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/09 17:40:59 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:50:11 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #define X stock->x2
 #define TAB stock->tabint
 
-static int	ft_test(t_stock *stock, t_map *map)
+static int	ft_calc(t_map *map)
 {
 	int n;
 	int maxiter;
@@ -40,10 +40,11 @@ static int	ft_test(t_stock *stock, t_map *map)
 void		julia(t_stock *stock, double x, double y, int z)
 {
 	int		n;
-	double	pos;
 	t_map	map;
 
-	init_stock_map(stock, &map);
+	ft_create_img(stock);
+	if (stock->ra == 0)
+		init_stock_map(stock, &map);
 	stock->juli = 1;
 	Y = -1;
 	while (++Y < stock->height)
@@ -52,11 +53,11 @@ void		julia(t_stock *stock, double x, double y, int z)
 		X = -1;
 		while (++X < stock->width)
 		{
-			map.zr = ft_map(stock, -2, 2, X);
-			map.zi = ft_map(stock, -2, 2, Y);
+			map.zr = ft_map(-2, 2, X);
+			map.zi = ft_map(-2, 2, Y);
 			map.ca = x;
 			map.cb = y;
-			n = ft_test(stock, &map);
+			n = ft_calc(&map);
 			TAB[Y][X] = n;
 			ft_draw(stock, z, n);
 		}

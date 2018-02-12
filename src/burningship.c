@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tricorne.c                                         :+:      :+:    :+:   */
+/*   burningship.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:11:33 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/09 13:00:35 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:53:19 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #define X stock->x2
 #define TAB stock->tabint
 
-static int	ft_test(t_stock *stock, t_map *map)
+static int	ft_calc(t_map *map)
 {
 	int n;
 	int maxiter;
@@ -39,23 +39,23 @@ static int	ft_test(t_stock *stock, t_map *map)
 	return (n);
 }
 
-void		burningsheep(t_stock *stock)
+void		burningship(t_stock *stock)
 {
 	int		n;
-	double	pos;
 	t_map	map;
 
+	ft_create_img(stock);
 	init_stock_map(stock, &map);
 	Y = -1;
 	while (++Y < stock->height)
 	{
 		TAB[Y] = (int *)malloc(sizeof(int) * WIN_W);
 		X = -1;
-		map.cb = ft_map(stock, -2, 2, Y);
+		map.cb = ft_map(-2, 2, Y);
 		while (++X < stock->width)
 		{
-			map.ca = ft_map(stock, -2, 2, X);
-			n = ft_test(stock, &map);
+			map.ca = ft_map(-2, 2, X);
+			n = ft_calc(&map);
 			TAB[Y][X] = n;
 			ft_draw(stock, 0, n);
 		}

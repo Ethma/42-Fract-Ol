@@ -12,7 +12,7 @@ hooks.c \
 exit.c \
 julia.c \
 mandelbrot.c \
-tricorne.c 
+burningship.c 
 SRC = $(addprefix $(SRC_PATH)/,$(FILES))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 L        = -L./libft/ -lft -L./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
@@ -20,21 +20,21 @@ RM		 = rm -f
 
 all: header $(NAME)
 
-$(NAME): bjr $(OBJ)
+$(NAME): $(OBJ_PATH) $(OBJ)
 	@tput cnorm
 	@echo ""
 	@echo ""
 	make -C libft/
 	make -C minilibx_macos/
-	$(CC) $(OBJ) $(L) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(L) -o $(NAME)
 	@echo "./[0;34m$(NAME)[0;38m created."
 	@tput cnorm
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	$(CC) -c $? $(INCLUDE) -o $@
+	$(CC) $(CFLAGS) -c $? $(INCLUDE) -o $@
 clean:
 	rm -rf $(OBJ_PATH)
 	@echo "[0;1mClear."
-bjr:
+$(OBJ_PATH):
 	mkdir -p $(OBJ_PATH) 
 fclean: 	clean
 	$(RM) $(NAME)
@@ -66,4 +66,4 @@ header:
 
 re:			fclean all
 
-.PHONY: re clean fclean all
+.PHONY: re clean fclean all bjr
