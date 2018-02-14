@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:06:17 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/12 14:47:22 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/14 15:14:31 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 
 void	keykey(int i, t_stock *stock)
 {
-	int y;
-
-	y = 0;
 	if (i == 83)
 		ft_redraw(stock, 0);
 	if (i == 84)
@@ -67,7 +64,30 @@ int		mouse(int x, int y, t_stock *stock)
 		CA = (double)x / (double)WIN_W * 4 - 2;
 		CB = (double)y / (double)WIN_H * 4 - 2;
 		mlx_clear_window(stock->mlx, stock->window);
-		julia(stock, CA, CB, 0);
+		julia(stock, CA, CB, stock->color);
+	}
+	return (0);
+}
+
+int		mouse_hook(int key, int x, int y, t_stock *stock)
+{
+	x = 0;
+	y = 0;
+	if (key == 1)
+	{
+		stock->zzom = 1;
+		stock->xx = ft_map(-2, 2, x);
+		stock->yy = ft_map(-2, 2, y);
+		mlx_clear_window(stock->mlx, stock->window);
+		mandelbrot(stock);
+	}
+	if (key == 2)
+	{
+		stock->zzom = 0;
+		stock->xx = ft_map(-2, 2, x);
+		stock->yy = ft_map(-2, 2, y);
+		mlx_clear_window(stock->mlx, stock->window);
+		mandelbrot(stock);
 	}
 	return (0);
 }

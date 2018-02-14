@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:11:33 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/12 14:53:19 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/14 12:46:27 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #define Y stock->y2
 #define X stock->x2
 #define TAB stock->tabint
+#define ZOOM stock->zoom
 
 static int	ft_calc(t_map *map)
 {
@@ -44,7 +45,6 @@ void		burningship(t_stock *stock)
 	int		n;
 	t_map	map;
 
-	ft_create_img(stock);
 	init_stock_map(stock, &map);
 	Y = -1;
 	while (++Y < stock->height)

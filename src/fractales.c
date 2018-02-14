@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:48:11 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/12 14:26:32 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/14 15:06:57 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		ft_end(t_stock *stock)
 {
 	mlx_put_image_to_window(stock->mlx, stock->window, stock->img, 0, 0);
 	mlx_key_hook(stock->window, key_hook, stock);
-//	mlx_mouse_hook(stock->window, mouse_hook, stock);
+	mlx_mouse_hook(stock->window, mouse_hook, stock);
 	if (stock->juli == 1)
 		mlx_hook(stock->window, 6, 6L >> 1L, mouse, stock);
 	if (stock->juli == 1 && stock->move == 'N')
@@ -30,10 +30,18 @@ void		ft_end(t_stock *stock)
 
 void		init_stock_map(t_stock *stock, t_map *map)
 {
-	stock->START_X = 0;
-	stock->START_Y = 0.0;
+	stock->start_x = 0.0;
+	stock->start_y = 0.0;
 	map->yy = 0;
 	map->xx = 0;
+	stock->yyy = 2;
+	stock->yy = -2;
+	stock->xx = -2;
+	stock->xxx = 2;
+	stock->zoom = 1;
+	if (stock->zzom == 1)
+		stock->zoom = 0.8;
+	stock->zzom = 0;
 	stock->height = WIN_H;
 	stock->width = WIN_W;
 	stock->juli = 0;

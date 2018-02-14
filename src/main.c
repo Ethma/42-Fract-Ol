@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:06:41 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/12 14:52:03 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/14 12:47:46 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,20 @@ void	ft_create_img(t_stock *stock)
 int		ft_input(t_stock *stock, char *str)
 {
 	if (ft_strcmp(str, "Mandelbrot") == 0)
+	{
+		ft_create_img(stock);
 		mandelbrot(stock);
+	}
 	if (ft_strcmp(str, "Julia") == 0)
+	{
+		ft_create_img(stock);
 		julia(stock, 0.285, 0.01, 0);
+	}
 	if (ft_strcmp(str, "Burningship") == 0)
+	{
+		ft_create_img(stock);
 		burningship(stock);
+	}
 	if (ft_strcmp(str, "Slip") == 0)
 	{
 		ft_create_img(stock);

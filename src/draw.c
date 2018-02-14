@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 13:03:53 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/12 14:33:17 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/14 15:04:10 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	ft_redraw(t_stock *stock, int i)
 
 	y = -1;
 	Y1 = 0;
+	stock->color = i;
 	while (++y < WIN_H)
 	{
 		x = -1;

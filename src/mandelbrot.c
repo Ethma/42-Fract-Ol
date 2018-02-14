@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:05:52 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/12 14:49:20 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/14 14:56:36 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #define Y stock->y2
 #define X stock->x2
 #define TABINT stock->tabint
+#define ZOOM stock->zoom
 
 static int	ft_calc(t_map *map)
 {
@@ -44,17 +45,16 @@ void		mandelbrot(t_stock *stock)
 	t_map	map;
 
 	maxiter = 100;
-	ft_create_img(stock);
 	init_stock_map(stock, &map);
 	Y = -1;
 	while (++Y < stock->height)
 	{
 		TABINT[Y] = (int *)malloc(sizeof(int) * WIN_W);
 		X = -1;
-		map.cb = ft_map(-2, 2, Y);
+		map.cb = ft_map(stock->yy, stock->yyy, Y) * ZOOM;
 		while (++X < stock->width)
 		{
-			map.ca = ft_map(-2, 2, X);
+			map.ca = ft_map(stock->xx, stock->xxx, X) * ZOOM;
 			map.zr = 0;
 			map.zi = 0;
 			n = ft_calc(&map);
