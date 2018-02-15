@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:05:25 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/14 12:50:01 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:41:10 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #define X stock->x2
 #define TAB stock->tabint
 #define ZOOM stock->zoom
+#define B1 stock->borne1
+#define B2 stock->borne2
 
 static int	ft_calc(t_map *map)
 {
@@ -46,6 +48,7 @@ void		julia(t_stock *stock, double x, double y, int z)
 	if (stock->ra == 0)
 		init_stock_map(stock, &map);
 	stock->juli = 1;
+	stock->identifier = 2;
 	Y = -1;
 	while (++Y < stock->height)
 	{
@@ -53,8 +56,8 @@ void		julia(t_stock *stock, double x, double y, int z)
 		X = -1;
 		while (++X < stock->width)
 		{
-			map.zr = ft_map(-2, 2, X);
-			map.zi = ft_map(-2, 2, Y);
+			map.zr = ft_map(B1, B2, X) / ZOOM;
+			map.zi = ft_map(B1, B2, Y) / ZOOM;
 			map.ca = x;
 			map.cb = y;
 			n = ft_calc(&map);

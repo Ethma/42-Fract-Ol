@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:11:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/14 15:04:00 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:38:16 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ typedef struct	s_stock
 	int			ra;
 	int			identifier;
 	int			color;
+	double		value;
+	int			pressure;
+	int			borne1;
+	double		borne2;
 }				t_stock;
 
 typedef struct	s_map
@@ -96,5 +100,7 @@ void			burningship(t_stock *stock);
 int				mouse(int x, int y, t_stock *stock);
 void			ft_create_img(t_stock *stock);
 int				mouse_hook(int key, int x, int y, t_stock *stock);
+void			ft_coloors(t_stock *stock, t_color color, int n);
+void			ft_recalc(t_stock *stock);
 
 #endif

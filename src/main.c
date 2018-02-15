@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:06:41 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/14 12:47:46 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:41:38 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ void	ft_create_img(t_stock *stock)
 	stock->window = mlx_new_window(stock->mlx, WIN_W, WIN_H, "Kevin");
 	stock->img = mlx_new_image(stock->mlx, WIN_W, WIN_H);
 	stock->move = 'N';
+	stock->zoom = 1;
+	stock->pressure = 1;
+	stock->borne1 = -2;
+	stock->borne2 = 2;
 }
 
 int		ft_input(t_stock *stock, char *str)

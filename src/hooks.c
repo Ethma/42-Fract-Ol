@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:06:17 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/14 15:14:31 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:50:11 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,25 @@ void	keykey(int i, t_stock *stock)
 	stock->img, 0, 0);
 	mlx_string_put(stock->mlx, stock->window, 0, 0,
 	0xFFFFFF, "Change color :NUM PAD 1 TO 4");
-	if (stock->juli == 1 && stock->move == 'N')
+	if (stock->juli == 1)
 		mlx_string_put(stock->mlx, stock->window, 0, 20,
-		0xFFFFFF, "Press Space to activate Julia");
+		0xFFFFFF, "Press Space to activate/desactivate Julia");
+	if (i == 49)
+	{
+		stock->move = stock->move == 'Y' ? 'N' : 'Y';
+		stock->pressure = 0;
+	}
 }
 
+void	ft_recalc(t_stock *stock)
+{
+	if (stock->identifier == 1)
+		mandelbrot(stock);
+	else if (stock->identifier == 2 && stock->pressure == 1)
+		julia(stock, 0.285, 0.01, stock->color);
+	else if (stock->identifier == 2)
+		julia(stock, CA, CB, stock->color);
+}
 int		key_hook(int keycode, t_stock *stock)
 {
 	if (keycode == 53)
@@ -50,10 +64,14 @@ int		key_hook(int keycode, t_stock *stock)
 	if (keycode == 86)
 		keykey(86, stock);
 	if (keycode == 49)
-		stock->move = stock->move == 'Y' ? 'N' : 'Y';
-	if (stock->juli == 1 && stock->move == 'Y')
-		mlx_string_put(stock->mlx, stock->window, 0, 40,
-		0xFFFFFF, "Press Space to stop Julia");
+		keykey(49, stock);
+	if (keycode == 15)
+	{
+		stock->zoom = 1;
+		stock->borne1 = -2;
+		stock->borne2 = 2;
+		ft_recalc(stock);
+	}
 	return (0);
 }
 
@@ -71,23 +89,30 @@ int		mouse(int x, int y, t_stock *stock)
 
 int		mouse_hook(int key, int x, int y, t_stock *stock)
 {
-	x = 0;
-	y = 0;
+	if (key == 4)
+	{
+		stock->zoom += 0.1;
+		mlx_clear_window(stock->mlx, stock->window);
+		ft_recalc(stock);
+	}
+	if (key == 5)
+	{
+		stock->zoom -= 0.1;
+		mlx_clear_window(stock->mlx, stock->window);
+		ft_recalc(stock);
+	}
 	if (key == 1)
 	{
-		stock->zzom = 1;
-		stock->xx = ft_map(-2, 2, x);
-		stock->yy = ft_map(-2, 2, y);
+		stock->borne1 = ft_map(-2, 2, stock->x2 - x);
+		stock->borne2 = ft_map(-2, 2, stock->y2 - y);
 		mlx_clear_window(stock->mlx, stock->window);
-		mandelbrot(stock);
+		ft_recalc(stock);
 	}
 	if (key == 2)
 	{
-		stock->zzom = 0;
-		stock->xx = ft_map(-2, 2, x);
-		stock->yy = ft_map(-2, 2, y);
+		stock->zoom -= 0.1;
 		mlx_clear_window(stock->mlx, stock->window);
-		mandelbrot(stock);
+		ft_recalc(stock);
 	}
 	return (0);
 }

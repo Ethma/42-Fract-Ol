@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:48:11 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/14 15:06:57 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:36:48 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 void		ft_end(t_stock *stock)
 {
 	mlx_put_image_to_window(stock->mlx, stock->window, stock->img, 0, 0);
-	mlx_key_hook(stock->window, key_hook, stock);
-	mlx_mouse_hook(stock->window, mouse_hook, stock);
 	if (stock->juli == 1)
 		mlx_hook(stock->window, 6, 6L >> 1L, mouse, stock);
-	if (stock->juli == 1 && stock->move == 'N')
-		mlx_string_put(stock->mlx, stock->window, 0, 20,
-		0xFFFFFF, "Press Space to activate Julia");
+	mlx_key_hook(stock->window, key_hook, stock);
 	mlx_string_put(stock->mlx, stock->window, 0, 0,
 	0xFFFFFF, "Change color :NUM PAD 1 TO 4");
+	if (stock->juli == 1)
+		mlx_string_put(stock->mlx, stock->window, 0, 20,
+		0xFFFFFF, "Press Space to activate/desactivate Julia");
+	mlx_mouse_hook(stock->window, mouse_hook, stock);
 	mlx_loop(stock->mlx);
 }
 
@@ -38,10 +38,6 @@ void		init_stock_map(t_stock *stock, t_map *map)
 	stock->yy = -2;
 	stock->xx = -2;
 	stock->xxx = 2;
-	stock->zoom = 1;
-	if (stock->zzom == 1)
-		stock->zoom = 0.8;
-	stock->zzom = 0;
 	stock->height = WIN_H;
 	stock->width = WIN_W;
 	stock->juli = 0;

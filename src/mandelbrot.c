@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:05:52 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/14 14:56:36 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:34:44 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,25 @@ static int	ft_calc(t_map *map)
 void		mandelbrot(t_stock *stock)
 {
 	int		n;
-	int		maxiter;
 	t_map	map;
 
-	maxiter = 100;
-	init_stock_map(stock, &map);
+	if (stock->ra == 0)
+		init_stock_map(stock, &map);
 	Y = -1;
+	stock->identifier = 1;
 	while (++Y < stock->height)
 	{
 		TABINT[Y] = (int *)malloc(sizeof(int) * WIN_W);
 		X = -1;
-		map.cb = ft_map(stock->yy, stock->yyy, Y) * ZOOM;
+		map.cb = ft_map(-2, 2, Y) / ZOOM;
 		while (++X < stock->width)
 		{
-			map.ca = ft_map(stock->xx, stock->xxx, X) * ZOOM;
+			map.ca = ft_map(-2, 2, X) / ZOOM;
 			map.zr = 0;
 			map.zi = 0;
 			n = ft_calc(&map);
 			TABINT[Y][X] = n;
-			ft_draw(stock, 0, n);
+			ft_draw(stock, stock->color, n);
 		}
 	}
 	ft_end(stock);

@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 13:03:53 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/14 15:04:10 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/15 15:45:26 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,30 @@ void	ft_draw(t_stock *stock, int i, int n)
 		mlx_pixel_put_to_image(stock->img, X1, Y1, color.b);
 	else
 		mlx_pixel_put_to_image(stock->img, X1, Y1, color.a);
+}
+
+void	ft_coloors(t_stock *stock, t_color color, int n)
+{
+	if (n == 1000)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.k);
+	else if (n >= 900 && n <= 990)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.j);
+	else if (n >= 800 && n <= 890)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.i);
+	else if (n >= 700 && n <= 790)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.h);
+	else if (n >= 600 && n <= 690)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.g);
+	else if (n >= 500 && n <= 590)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.f);
+	else if (n >= 400 && n <= 490)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.e);
+	else if (n >= 300 && n <= 390)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.d);
+	else if (n >= 200 && n <= 290)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.c);
+	else if (n >= 100 && n <= 190)
+		mlx_pixel_put_to_image(stock->img, X1, Y1, color.b);
 }
 
 void	ft_redraw(t_stock *stock, int i)

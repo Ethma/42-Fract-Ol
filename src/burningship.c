@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:11:33 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/14 12:46:27 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:34:57 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void		burningship(t_stock *stock)
 	int		n;
 	t_map	map;
 
-	init_stock_map(stock, &map);
+	if (stock->ra == 0)
+		init_stock_map(stock, &map);
 	Y = -1;
 	while (++Y < stock->height)
 	{
