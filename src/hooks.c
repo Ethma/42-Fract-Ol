@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:06:17 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/15 17:50:11 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:54:21 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_recalc(t_stock *stock)
 	else if (stock->identifier == 2)
 		julia(stock, CA, CB, stock->color);
 }
+
 int		key_hook(int keycode, t_stock *stock)
 {
 	if (keycode == 53)
@@ -93,26 +94,23 @@ int		mouse_hook(int key, int x, int y, t_stock *stock)
 	{
 		stock->zoom += 0.1;
 		mlx_clear_window(stock->mlx, stock->window);
-		ft_recalc(stock);
 	}
 	if (key == 5)
 	{
 		stock->zoom -= 0.1;
 		mlx_clear_window(stock->mlx, stock->window);
-		ft_recalc(stock);
 	}
 	if (key == 1)
 	{
 		stock->borne1 = ft_map(-2, 2, stock->x2 - x);
 		stock->borne2 = ft_map(-2, 2, stock->y2 - y);
 		mlx_clear_window(stock->mlx, stock->window);
-		ft_recalc(stock);
 	}
 	if (key == 2)
 	{
 		stock->zoom -= 0.1;
 		mlx_clear_window(stock->mlx, stock->window);
-		ft_recalc(stock);
 	}
+	ft_recalc(stock);
 	return (0);
 }

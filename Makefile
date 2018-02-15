@@ -12,7 +12,8 @@ hooks.c \
 exit.c \
 julia.c \
 mandelbrot.c \
-burningship.c 
+burningship.c \
+clean.c
 SRC = $(addprefix $(SRC_PATH)/,$(FILES))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 L        = -L./libft/ -lft -L./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit

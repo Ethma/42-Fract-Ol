@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 13:03:53 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/15 15:45:26 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:55:13 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,18 +132,4 @@ void	ft_redraw(t_stock *stock, int i)
 	}
 	mlx_string_put(stock->mlx, stock->window, 0, 0,
 	0xFFFFFF, "Change color :NUM PAD 1 TO 4");
-}
-
-void	ft_clean(t_stock *stock)
-{
-	int	x;
-	int	y;
-
-	y = -1;
-	while (++y < stock->height)
-	{
-		x = -1;
-		while (++x < stock->width)
-			mlx_pixel_put_to_image(stock->img, x, y, 0);
-	}
 }
