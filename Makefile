@@ -13,6 +13,8 @@ exit.c \
 julia.c \
 mandelbrot.c \
 burningship.c \
+frog.c \
+slip.c \
 clean.c
 SRC = $(addprefix $(SRC_PATH)/,$(FILES))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))

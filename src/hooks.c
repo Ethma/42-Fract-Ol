@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Mendy <Mendy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:06:17 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/15 17:54:21 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/16 11:45:29 by Mendy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ void	ft_recalc(t_stock *stock)
 		julia(stock, 0.285, 0.01, stock->color);
 	else if (stock->identifier == 2)
 		julia(stock, CA, CB, stock->color);
+	else if (stock->identifier == 3)
+		burningship(stock);
+	else if (stock->identifier == 4)
+		frog(stock);
+	if (stock->identifier == 5)
+		slip(stock);
 }
 
 int		key_hook(int keycode, t_stock *stock)
@@ -56,13 +62,13 @@ int		key_hook(int keycode, t_stock *stock)
 		mlx_destroy_window(stock->mlx, stock->window);
 		ft_exit_finish("Exit Success", 2);
 	}
-	if (keycode == 83)
+	if (keycode == 83 || keycode == 18)
 		keykey(83, stock);
-	if (keycode == 84)
+	if (keycode == 84 || keycode == 19)
 		keykey(84, stock);
-	if (keycode == 85)
+	if (keycode == 85 || keycode == 20)
 		keykey(85, stock);
-	if (keycode == 86)
+	if (keycode == 86 || keycode == 21)
 		keykey(86, stock);
 	if (keycode == 49)
 		keykey(49, stock);
@@ -98,12 +104,16 @@ int		mouse_hook(int key, int x, int y, t_stock *stock)
 	if (key == 5)
 	{
 		stock->zoom -= 0.1;
+		if (stock->zoom == 0)
+			stock->zoom += 0.1;
 		mlx_clear_window(stock->mlx, stock->window);
 	}
 	if (key == 1)
 	{
 		stock->borne1 = ft_map(-2, 2, stock->x2 - x);
 		stock->borne2 = ft_map(-2, 2, stock->y2 - y);
+		printf("B1 = %f\n", stock->borne1);
+		printf("B2 = %f\n", stock->borne2);
 		mlx_clear_window(stock->mlx, stock->window);
 	}
 	if (key == 2)

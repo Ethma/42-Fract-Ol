@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   slip.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Mendy <Mendy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/06 15:05:25 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/16 11:46:52 by Mendy            ###   ########.fr       */
+/*   Created: 2018/02/16 11:06:18 by Mendy             #+#    #+#             */
+/*   Updated: 2018/02/16 11:08:49 by Mendy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 #define TMP map->tmp
 #define Y stock->y2
 #define X stock->x2
-#define TAB stock->tabint
+#define TABINT stock->tabint
 #define ZOOM stock->zoom
-#define B1 stock->borne1
-#define B2 stock->borne2
 
 static int	ft_calc(t_map *map)
 {
@@ -32,7 +30,7 @@ static int	ft_calc(t_map *map)
 	{
 		TMP = ZR;
 		ZR = ZR * ZR - ZI * ZI + map->ca;
-		ZI = 2 * TMP * ZI + map->cb;
+		 ZI = -2 * TMP * ZI + map->cb;
 		if ((ZR * ZR - ZI * ZI) >= 4.0)
 			return (n);
 		n++;
@@ -40,29 +38,28 @@ static int	ft_calc(t_map *map)
 	return (n);
 }
 
-void		julia(t_stock *stock, double x, double y, int z)
+void		slip(t_stock *stock)
 {
 	int		n;
 	t_map	map;
 
 	if (stock->ra == 0)
 		init_stock_map(stock, &map);
-	stock->juli = 1;
-	stock->identifier = 2;
 	Y = -1;
+	stock->identifier = 5;
 	while (++Y < stock->height)
 	{
-		TAB[Y] = (int *)malloc(sizeof(int) * WIN_W);
+		TABINT[Y] = (int *)malloc(sizeof(int) * WIN_W);
 		X = -1;
+		map.cb = ft_map(-2, 2, Y) / ZOOM;
 		while (++X < stock->width)
 		{
-			map.zr = ft_map(B1, B2, X) / ZOOM;
-			map.zi = ft_map(B1, B2, Y) / ZOOM;
-			map.ca = x;
-			map.cb = y;
+			map.ca = ft_map(-2, 2, X) / ZOOM;
+			map.zr = 0;
+			map.zi = 0;
 			n = ft_calc(&map);
-			TAB[Y][X] = n;
-			ft_draw(stock, z, n);
+			TABINT[Y][X] = n;
+			ft_draw(stock, stock->color, n);
 		}
 	}
 	ft_end(stock);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Mendy <Mendy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:06:41 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/15 17:41:38 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/16 11:46:58 by Mendy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,14 @@ int		ft_input(t_stock *stock, char *str)
 	if (ft_strcmp(str, "Slip") == 0)
 	{
 		ft_create_img(stock);
+		slip(stock);
 		return (4);
 	}
-	if (ft_strcmp(str, "Tricorne") == 0)
-		;
+	if (ft_strcmp(str, "Frog") == 0)
+	{
+		ft_create_img(stock);
+		frog(stock);
+	}
 	return (-1);
 }
 

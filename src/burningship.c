@@ -47,6 +47,7 @@ void		burningship(t_stock *stock)
 
 	if (stock->ra == 0)
 		init_stock_map(stock, &map);
+	stock->identifier = 3;
 	Y = -1;
 	while (++Y < stock->height)
 	{
