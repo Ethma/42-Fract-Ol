@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:06:17 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/19 13:49:42 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/19 14:02:43 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		key_hook(int keycode, t_stock *stock)
 	int i;
 
 	i = -1;
-	while (g_myfunc[i++].i)
+	while (g_myfunc[++i].i)
 	{
 		if (g_myfunc[i].i == keycode)
 		{
@@ -103,6 +103,8 @@ int		mouse(int x, int y, t_stock *stock)
 
 int		mouse_hook(int key, int x, int y, t_stock *stock)
 {
+	x = 0;
+	y = 0;
 	if (key == 4)
 		stock->zoom *= 1.1;
 	if (key == 5)
@@ -112,13 +114,6 @@ int		mouse_hook(int key, int x, int y, t_stock *stock)
 			stock->zoom += 0.1;
 		mlx_clear_window(stock->mlx, stock->window);
 	}
-	if (key == 1)
-	{
-		stock->borne1 = ft_map(-2, 2, x);
-		stock->borne2 = ft_map(-2, 2, y);
-	}
-	if (key == 2)
-		stock->zoom -= 0.1;
 	mlx_clear_window(stock->mlx, stock->window);
 	ft_recalc(stock);
 	return (0);

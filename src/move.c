@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 11:14:37 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/19 13:53:10 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/19 13:56:31 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	screenhelp(t_stock *stock)
 	0xFFFFFF, "Change color :NUM PAD 1 TO 4");
 	mlx_string_put(stock->mlx, stock->window, 0, 40,
 	0xFFFFFF, "R for RESET");
+	mlx_string_put(stock->mlx, stock->window, 0, 60,
+	0xFFFFFF, "+ / - to change fractale");
 	if (stock->juli == 1)
 	{
 		mlx_string_put(stock->mlx, stock->window, 0, 20,
