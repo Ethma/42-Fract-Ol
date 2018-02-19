@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   slip.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Mendy <Mendy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 11:06:18 by Mendy             #+#    #+#             */
-/*   Updated: 2018/02/16 11:08:49 by Mendy            ###   ########.fr       */
+/*   Updated: 2018/02/19 11:33:46 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_calc(t_map *map)
 	{
 		TMP = ZR;
 		ZR = ZR * ZR - ZI * ZI + map->ca;
-		 ZI = -2 * TMP * ZI + map->cb;
+		ZI = -2 * TMP * ZI + map->cb;
 		if ((ZR * ZR - ZI * ZI) >= 4.0)
 			return (n);
 		n++;

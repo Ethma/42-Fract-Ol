@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Mendy <Mendy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:06:17 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/16 11:45:29 by Mendy            ###   ########.fr       */
+/*   Updated: 2018/02/19 11:30:04 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,15 @@ void	ft_recalc(t_stock *stock)
 int		key_hook(int keycode, t_stock *stock)
 {
 	if (keycode == 53)
-	{
-		mlx_destroy_image(stock->mlx, stock->img);
-		mlx_destroy_window(stock->mlx, stock->window);
-		ft_exit_finish("Exit Success", 2);
-	}
+		keykey2(53, stock);
+	if (keycode == 123)
+		keykey2(123, stock);
+	if (keycode == 124)
+		keykey2(124, stock);
+	if (keycode == 125)
+		keykey2(125, stock);
+	if (keycode == 126)
+		keykey2(126, stock);
 	if (keycode == 83 || keycode == 18)
 		keykey(83, stock);
 	if (keycode == 84 || keycode == 19)
@@ -73,12 +77,7 @@ int		key_hook(int keycode, t_stock *stock)
 	if (keycode == 49)
 		keykey(49, stock);
 	if (keycode == 15)
-	{
-		stock->zoom = 1;
-		stock->borne1 = -2;
-		stock->borne2 = 2;
-		ft_recalc(stock);
-	}
+		keykey2(15, stock);
 	return (0);
 }
 
@@ -97,30 +96,22 @@ int		mouse(int x, int y, t_stock *stock)
 int		mouse_hook(int key, int x, int y, t_stock *stock)
 {
 	if (key == 4)
-	{
-		stock->zoom += 0.1;
-		mlx_clear_window(stock->mlx, stock->window);
-	}
+		stock->zoom *= 1.1;
 	if (key == 5)
 	{
-		stock->zoom -= 0.1;
+		stock->zoom *= 0.9;
 		if (stock->zoom == 0)
 			stock->zoom += 0.1;
 		mlx_clear_window(stock->mlx, stock->window);
 	}
 	if (key == 1)
 	{
-		stock->borne1 = ft_map(-2, 2, stock->x2 - x);
-		stock->borne2 = ft_map(-2, 2, stock->y2 - y);
-		printf("B1 = %f\n", stock->borne1);
-		printf("B2 = %f\n", stock->borne2);
-		mlx_clear_window(stock->mlx, stock->window);
+		stock->borne1 = ft_map(-2, 2, x);
+		stock->borne2 = ft_map(-2, 2, y);
 	}
 	if (key == 2)
-	{
 		stock->zoom -= 0.1;
-		mlx_clear_window(stock->mlx, stock->window);
-	}
+	mlx_clear_window(stock->mlx, stock->window);
 	ft_recalc(stock);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Mendy <Mendy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:11:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/16 11:47:10 by Mendy            ###   ########.fr       */
+/*   Updated: 2018/02/19 11:39:16 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef	struct	s_color
 }				t_color;
 
 int				ft_input(t_stock *stock, char *str);
+void			ft_input2(t_stock *stock, int i);
 void			ft_create_img(t_stock *stock);
 void			init_stock_map(t_stock *stock, t_map *map);
 double			ft_map(double new_min, double new_max, double value);
@@ -92,6 +93,7 @@ void			frog(t_stock *stock);
 void			slip(t_stock *stock);
 void			tricorne(t_stock *stock);
 void			burningship(t_stock *stock);
+void			coucou(t_stock *stock);
 void			ft_end(t_stock *stock);
 void			mlx_pixel_put_to_image(void *img, int x, int y, int color);
 void			ft_draw(t_stock *stock, int i, int n);
@@ -102,6 +104,8 @@ void			ft_redraw(t_stock *stock, int i);
 void			ft_recalc(t_stock *stock);
 int				mouse_hook(int key, int x, int y, t_stock *stock);
 int				key_hook(int keycode, t_stock *stock);
+void			keykey(int i, t_stock *stock);
+void			keykey2(int i, t_stock *stock);
 int				mouse(int x, int y, t_stock *stock);
 int				ft_exit_finish(char *str, int i);
 

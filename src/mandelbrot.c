@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:05:52 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/15 23:33:57 by Mendy            ###   ########.fr       */
+/*   Updated: 2018/02/19 11:33:34 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_calc(t_map *map)
 	{
 		TMP = ZR;
 		ZR = ZR * ZR - ZI * ZI + map->ca;
-		 ZI = 2 * TMP * ZI + map->cb;
+		ZI = 2 * TMP * ZI + map->cb;
 		if ((ZR * ZR - ZI * ZI) >= 4.0)
 			return (n);
 		n++;

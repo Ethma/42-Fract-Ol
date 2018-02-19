@@ -15,7 +15,9 @@ mandelbrot.c \
 burningship.c \
 frog.c \
 slip.c \
-clean.c
+test.c \
+clean.c \
+move.c
 SRC = $(addprefix $(SRC_PATH)/,$(FILES))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 L        = -L./libft/ -lft -L./minilibx_macos/ -lmlx -framework OpenGL -framework AppKit
