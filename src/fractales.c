@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:48:11 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/15 17:36:48 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/19 13:41:30 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void		ft_end(t_stock *stock)
 	mlx_key_hook(stock->window, key_hook, stock);
 	mlx_string_put(stock->mlx, stock->window, 0, 0,
 	0xFFFFFF, "Change color :NUM PAD 1 TO 4");
+	mlx_string_put(stock->mlx, stock->window, 0, 40,
+	0xFFFFFF, "R for RESET");
 	if (stock->juli == 1)
 		mlx_string_put(stock->mlx, stock->window, 0, 20,
 		0xFFFFFF, "Press Space to activate/desactivate Julia");

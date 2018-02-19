@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:34:38 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/19 11:33:25 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/19 13:42:06 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		frog(t_stock *stock)
 
 	if (stock->ra == 0)
 		init_stock_map(stock, &map);
+	stock->juli = 0;
 	Y = -1;
 	stock->identifier = 4;
 	while (++Y < stock->height)

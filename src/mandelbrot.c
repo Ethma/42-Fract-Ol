@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 15:05:52 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/19 11:33:34 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/19 13:42:10 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void		mandelbrot(t_stock *stock)
 	if (stock->ra == 0)
 		init_stock_map(stock, &map);
 	Y = -1;
+	stock->juli = 0;
 	stock->identifier = 1;
 	while (++Y < stock->height)
 	{

@@ -6,13 +6,28 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:06:17 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/19 11:30:04 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/19 13:49:42 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
 #define CA stock->ca
 #define CB stock->cb
+
+static const t_toto g_myfunc[] =
+{
+	{53, keykey2},
+	{123, keykey2},
+	{124, keykey2},
+	{125, keykey2},
+	{126, keykey2},
+	{83, keykey},
+	{84, keykey},
+	{85, keykey},
+	{86, keykey},
+	{15, keykey2},
+	{49, keykey},
+};
 
 void	keykey(int i, t_stock *stock)
 {
@@ -24,18 +39,7 @@ void	keykey(int i, t_stock *stock)
 		ft_redraw(stock, 2);
 	if (i == 86)
 		ft_redraw(stock, 3);
-	mlx_put_image_to_window(stock->mlx, stock->window,
-	stock->img, 0, 0);
-	mlx_string_put(stock->mlx, stock->window, 0, 0,
-	0xFFFFFF, "Change color :NUM PAD 1 TO 4");
-	if (stock->juli == 1)
-		mlx_string_put(stock->mlx, stock->window, 0, 20,
-		0xFFFFFF, "Press Space to activate/desactivate Julia");
-	if (i == 49)
-	{
-		stock->move = stock->move == 'Y' ? 'N' : 'Y';
-		stock->pressure = 0;
-	}
+	screenhelp(stock);
 }
 
 void	ft_recalc(t_stock *stock)
@@ -52,32 +56,36 @@ void	ft_recalc(t_stock *stock)
 		frog(stock);
 	if (stock->identifier == 5)
 		slip(stock);
+	if (stock->identifier == 6)
+		fish(stock);
 }
 
 int		key_hook(int keycode, t_stock *stock)
 {
-	if (keycode == 53)
-		keykey2(53, stock);
-	if (keycode == 123)
-		keykey2(123, stock);
-	if (keycode == 124)
-		keykey2(124, stock);
-	if (keycode == 125)
-		keykey2(125, stock);
-	if (keycode == 126)
-		keykey2(126, stock);
-	if (keycode == 83 || keycode == 18)
+	int i;
+
+	i = -1;
+	while (g_myfunc[i++].i)
+	{
+		if (g_myfunc[i].i == keycode)
+		{
+			g_myfunc[i].f(keycode, stock);
+		}
+	}
+	if (keycode == 49 && stock->juli == 1)
+	{
+		stock->move = stock->move == 'Y' ? 'N' : 'Y';
+		stock->pressure = 0;
+	}
+	if (keycode == 18)
 		keykey(83, stock);
-	if (keycode == 84 || keycode == 19)
+	if (keycode == 19)
 		keykey(84, stock);
-	if (keycode == 85 || keycode == 20)
+	if (keycode == 20)
 		keykey(85, stock);
-	if (keycode == 86 || keycode == 21)
+	if (keycode == 21)
 		keykey(86, stock);
-	if (keycode == 49)
-		keykey(49, stock);
-	if (keycode == 15)
-		keykey2(15, stock);
+	keykey3(keycode, stock);
 	return (0);
 }
 

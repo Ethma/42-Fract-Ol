@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 11:06:18 by Mendy             #+#    #+#             */
-/*   Updated: 2018/02/19 11:33:46 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/19 13:41:54 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void		slip(t_stock *stock)
 	if (stock->ra == 0)
 		init_stock_map(stock, &map);
 	Y = -1;
+	stock->juli = 0;
 	stock->identifier = 5;
 	while (++Y < stock->height)
 	{

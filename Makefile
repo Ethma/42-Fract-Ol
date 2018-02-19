@@ -15,7 +15,7 @@ mandelbrot.c \
 burningship.c \
 frog.c \
 slip.c \
-test.c \
+fish.c \
 clean.c \
 move.c
 SRC = $(addprefix $(SRC_PATH)/,$(FILES))

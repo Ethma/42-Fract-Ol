@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:06:41 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/19 11:42:07 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/19 12:01:14 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ void	ft_input2(t_stock *stock, int i)
 		ft_create_img(stock);
 		frog(stock);
 	}
+	if (i == 3)
+	{
+		ft_create_img(stock);
+		fish(stock);
+	}
 }
 
 int		ft_input(t_stock *stock, char *str)
@@ -59,6 +64,8 @@ int		ft_input(t_stock *stock, char *str)
 		ft_input2(stock, 1);
 	if (ft_strcmp(str, "Frog") == 0)
 		ft_input2(stock, 2);
+	if (ft_strcmp(str, "Fish") == 0)
+		ft_input2(stock, 3);
 	return (-1);
 }
 
@@ -73,7 +80,7 @@ int		main(int ac, char **av)
 	}
 	if (ft_strcmp(av[1], "fractales") == 0)
 	{
-		ft_putendl("Mandelbrot | Julia | Burningship | Frog | Tricorne");
+		ft_putendl("Mandelbrot | Julia | Burningship | Frog | Tricorne | Fish");
 		return (0);
 	}
 	if (ft_input(&stock, av[1]) == -1)
