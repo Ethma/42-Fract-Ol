@@ -6,13 +6,13 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 11:14:37 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/19 13:56:31 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/20 12:19:24 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract.h"
 
-void	screenhelp(t_stock *stock)
+void		screenhelp(t_stock *stock)
 {
 	mlx_put_image_to_window(stock->mlx, stock->window,
 	stock->img, 0, 0);
@@ -29,7 +29,17 @@ void	screenhelp(t_stock *stock)
 	}
 }
 
-void	keykey2(int i, t_stock *stock)
+static void	reset(t_stock *stock)
+{
+	stock->zoom = 1;
+	stock->y = 0;
+	stock->x = 0;
+	stock->borne1 = -2;
+	stock->borne2 = 2;
+	ft_recalc(stock);
+}
+
+void		keykey2(int i, t_stock *stock)
 {
 	if (i == 124)
 		stock->x += 10;
@@ -47,21 +57,18 @@ void	keykey2(int i, t_stock *stock)
 		ft_exit_finish("Exit Success", 2);
 	}
 	if (i == 15)
-	{
-		stock->zoom = 1;
-		stock->borne1 = -2;
-		stock->borne2 = 2;
-		ft_recalc(stock);
-	}
+		reset(stock);
 	mlx_clear_window(stock->mlx, stock->window);
 	mlx_put_image_to_window(stock->mlx, stock->window,
 	stock->img, stock->x, stock->y);
 }
 
-void	keykey3(int i, t_stock *stock)
+void		keykey3(int i, t_stock *stock)
 {
 	if (i == 78 || i == 27)
 	{
+		stock->x = 0;
+		stock->y = 0;
 		stock->identifier--;
 		if (stock->identifier == 0)
 			stock->identifier = 6;
@@ -69,6 +76,8 @@ void	keykey3(int i, t_stock *stock)
 	}
 	if (i == 69 || i == 24)
 	{
+		stock->x = 0;
+		stock->y = 0;
 		stock->identifier++;
 		if (stock->identifier == 7)
 			stock->identifier = 1;

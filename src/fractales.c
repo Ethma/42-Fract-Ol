@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:48:11 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/19 13:56:37 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/20 12:32:06 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		ft_end(t_stock *stock)
 	mlx_loop(stock->mlx);
 }
 
-void		init_stock_map(t_stock *stock, t_map *map)
+int			init_stock_map(t_stock *stock, t_map *map)
 {
 	stock->start_x = 0.0;
 	stock->start_y = 0.0;
@@ -45,8 +45,10 @@ void		init_stock_map(t_stock *stock, t_map *map)
 	stock->height = WIN_H;
 	stock->width = WIN_W;
 	stock->juli = 0;
-	TAB = (int **)malloc(sizeof(int *) * (WIN_H));
+	if (!(TAB = (int **)malloc(sizeof(int *) * (WIN_H))))
+		ft_exit_finish("ERROR", 2);
 	stock->ra = 1;
+	return (0);
 }
 
 double		ft_map(double new_min, double new_max, double value)

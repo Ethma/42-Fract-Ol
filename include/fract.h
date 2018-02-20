@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 10:11:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/02/19 14:03:54 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/02/20 12:31:29 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct	s_toto
 int				ft_input(t_stock *stock, char *str);
 void			ft_input2(t_stock *stock, int i);
 void			ft_create_img(t_stock *stock);
-void			init_stock_map(t_stock *stock, t_map *map);
+int				init_stock_map(t_stock *stock, t_map *map);
 double			ft_map(double new_min, double new_max, double value);
 void			mandelbrot(t_stock *stock);
 void			julia(t_stock *stock, double x, double y, int z);
